@@ -6,13 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'modau.dart';
 import "product.dart";
 import "package:flutter_speed_dial/flutter_speed_dial.dart";
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() => runApp(MyApp());
 
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       title: 'EAP-DMHH',
       theme: ThemeData(
         // We set Poppins as our default font
-        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
+        textTheme: GoogleFonts.openSansTextTheme(Theme.of(context).textTheme),
         primaryColor: kPrimaryColor,
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(seconds: 2),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) =>
 
@@ -50,12 +50,37 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
-      //backgroundColor: Colors.white,
-      body: Center(
-        child: Image.asset('assets/images/sotay.jpg'),
-      ),
-    );
+      backgroundColor: Colors.white,
+      body:
+        Container(
+        height: double.infinity,
+        width: double.infinity,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/test1.gif"),
+              fit: BoxFit.contain,
+            ),),
+
+        /* child: FittedBox(child: Image.asset("assets/images/sotay.png"),
+        fit: BoxFit.cover), */
+          child: Stack(
+            children: [
+            Positioned(
+            top: 650,
+            left: 180,
+            child:
+             SpinKitFadingCube(
+              color: Colors.blue,
+              //size: 55.0,
+            ),
+
+          ),
+          ]
+        ),
+        ),
+      );
   }
 }
 
@@ -178,7 +203,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   focusedBorder: InputBorder.none,
                   icon: SvgPicture.asset("assets/icons/search.svg"),
                   hintText: 'Nhập cờ báo cần tìm ',
-                  hintStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                   suffixIcon: IconButton(
                     onPressed: (){
                       controller.clear();
@@ -223,13 +248,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
 
                     child:ListTile(
-                  leading: Image.asset("assets/images/cobao/" + product.image,
+                    /* leading: Image.asset("assets/images/cobao/" + product.image,
                     fit: BoxFit.contain,
                     width: 60,
                     height: 70,
-                  ),
-                  title: Text(product.name, style: TextStyle(color: Colors.black, fontSize:18, ), textAlign: TextAlign.left),
-                  onTap: () =>
+                         ), */
+                    title: Text(product.name, style: TextStyle(color: Colors.black, fontSize:18, ), textAlign: TextAlign.left),
+                    onTap: () =>
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -273,7 +298,7 @@ class ProductPageState extends State<ProductPage> {
 
     return Scaffold(
       appBar: AppBar(elevation: 6,
-        title: Text(this.item.name, style: TextStyle( fontSize: 26,color: Colors.white,),),
+        title: Text(this.item.name, style: TextStyle( fontSize: 26,color: Colors.white,fontWeight: FontWeight.w500),),
         backgroundColor: kPrimaryColor,
       ),
       body:
@@ -282,7 +307,7 @@ class ProductPageState extends State<ProductPage> {
           physics: ClampingScrollPhysics(),
           children:[
             Container(
-              margin: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+              margin: const EdgeInsets.fromLTRB(10, 20, 10, 10),
 
               decoration: BoxDecoration(
 
@@ -297,7 +322,7 @@ class ProductPageState extends State<ProductPage> {
                 ],
                 color: Colors.white,
               ),
-              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              padding: const EdgeInsets.fromLTRB(15, 10, 20, 10),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -307,9 +332,8 @@ class ProductPageState extends State<ProductPage> {
                     "Ý NGHĨA",
                     style: TextStyle(
                       color: Color(0xff0633f8),  //0xff232323
-                      fontSize: 20,
-
-                      fontWeight: FontWeight.w600,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                   SizedBox(height: 0),
@@ -333,7 +357,7 @@ class ProductPageState extends State<ProductPage> {
 
 
             Container(
-              margin: const EdgeInsets.fromLTRB(20, 5, 20, 10),
+              margin: const EdgeInsets.fromLTRB(10, 5, 10, 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(9),
                 border: Border.all(width: 1,color: Colors.white,),
@@ -357,9 +381,9 @@ class ProductPageState extends State<ProductPage> {
                     "GIẢI PHÁP",
                     style: TextStyle(
                       color: Color(0xff0633f8),
-                      fontSize: 20,
+                      fontSize: 22,
 
-                      fontWeight: FontWeight.w600,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
                   SizedBox(height: 0),
@@ -416,9 +440,6 @@ class ProductPageState extends State<ProductPage> {
                 ],
               ),
             ),
-
-
-
 
                           ],
                         )

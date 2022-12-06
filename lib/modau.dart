@@ -1,3 +1,4 @@
+import 'package:erp_hd/gioithieu.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'style.dart';
@@ -8,6 +9,10 @@ import "dongmaupage.dart";
 import "dongmaumodau.dart";
 import 'package:page_transition/page_transition.dart';
 import "package:erp_hd/nhommaumodau.dart";
+import "gioithieu.dart";
+import 'package:url_launcher/url_launcher.dart';
+
+
 
 
 class ManhinhEAP extends StatefulWidget {
@@ -52,7 +57,14 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
     return
       Scaffold(
         backgroundColor: Color(0xFFF1F4F8),
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: kPrimaryColor,
+          title: Container(
+            child: Image.asset('assets/images/logo_minhtam_trang.png',fit: BoxFit.cover,height: 45,),
+           ),
+          centerTitle: true,
+        ),
+
         drawer: Drawer(
             width: MediaQuery.of(context).size.width * 0.75,
             child: ListView(
@@ -60,11 +72,11 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                 padding: EdgeInsets.zero,
                 children: [
                    UserAccountsDrawerHeader(
-                    decoration: BoxDecoration(color:  Colors.blue ),
+                    decoration: BoxDecoration(color:  Colors.lightGreen),
                     accountName: Text("EAP - DMHH", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,
                       ),
                     ),
-                    accountEmail: Text("ungdungsanphammiennam@mitalabvn.com", style: TextStyle(fontWeight: FontWeight.bold,
+                    accountEmail: Text(" ", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 13
                       ),
                     ),
                     currentAccountPicture: Container(
@@ -87,10 +99,33 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                         Icons.home,
                       ),
                       title: const Text('Giới thiệu'),
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
+                      onTap: ()  =>
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              GioithieuPage(title: 'Chuyen vao trang giới thiệu',)
+                      ),
                     ),
+                    ),
+
+                  ListTile(
+                    leading: Icon(
+                      Icons.feedback_rounded,
+                    ),
+                    title: const Text('Góp ý'),
+                    onTap:() async {
+                      final url = Uri.parse(
+                  'https://docs.google.com/forms/d/e/1FAIpQLSecyhQ2D_-Q8HML79iMNGUhdX4P6gvwF92G8MM2zaZggpPttA/viewform?usp=sf_link',
+                    );
+                    if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                    } else {
+                  // ignore: avoid_print
+                  print("Can't launch $url");
+                }
+              },
+                  ),
 
                     AboutListTile( // <-- SEE HERE
                       icon: Icon(
@@ -155,18 +190,18 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                    child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(40, 0, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       child: Text(
                         'DANH SÁCH EAP',
                         textAlign: TextAlign.center,
                         style: GoogleFonts.openSans(
                           textStyle: TextStyle(
                           fontFamily: 'Outfit',
-                          color: Color(0xFF009DF7),
-                          fontSize: 39,
+                          color: Color(0xFF0E37E5),
+                          fontSize: 32,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -219,14 +254,14 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                               alignment: AlignmentDirectional(-1, 0.05),
                               child: Padding(
                                 padding:
-                                EdgeInsetsDirectional.fromSTEB(29, 5, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 10, 0, 0),
                                 child: Text(
                                   'HUYẾT HỌC',
                                   style: GoogleFonts.openSans(
                                     textStyle: TextStyle(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFFE02020),
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                   ),
@@ -283,14 +318,14 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                               alignment: AlignmentDirectional(0.5, 0),
                               child: Padding(
                                 padding:
-                                EdgeInsetsDirectional.fromSTEB(30, 5, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(45, 5, 0, 0),
                                 child: Text(
                                   'NHÓM MÁU',
                                   style: GoogleFonts.openSans(
                                     textStyle: TextStyle(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFFE02020),
-                                    fontSize:20,
+                                    fontSize:22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
@@ -330,7 +365,7 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                                   ),
                                   boxShadow: [
                                     BoxShadow(
-                                      blurRadius: 3,
+                                      blurRadius: 5,
                                       color: Color(0x33000000),
                                       offset: Offset(0, 1),
                                     )
@@ -346,14 +381,14 @@ class _ManhinhEAPState extends State<ManhinhEAP> with SingleTickerProviderStateM
                               alignment: AlignmentDirectional(-1, 0),
                               child: Padding(
                                 padding:
-                                EdgeInsetsDirectional.fromSTEB(28, 0, 0, 0),
+                                EdgeInsetsDirectional.fromSTEB(20, 0, 0, 0),
                                 child: Text(
                                   'ĐÔNG MÁU',
                                       style: GoogleFonts.openSans(
                                       textStyle: TextStyle(
                                     fontFamily: 'Outfit',
                                     color: Color(0xFFE02020),
-                                    fontSize: 20,
+                                    fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

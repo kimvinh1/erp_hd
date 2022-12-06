@@ -10,6 +10,7 @@ import "package:pinch_zoom/pinch_zoom.dart";
 import 'package:full_screen_image/full_screen_image.dart';
 import 'package:easy_image_viewer/easy_image_viewer.dart';
 import 'package:page_transition/page_transition.dart';
+import 'phuluc4_nhommau.dart';
 import 'main.dart';
 import 'phuluc1_nhommau.dart';
 import 'phuluc2_nhommau.dart';
@@ -29,6 +30,7 @@ class PhulucPageState extends State<PhulucPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
+
         body: Column(
           children: [
             Container(
@@ -37,7 +39,7 @@ class PhulucPageState extends State<PhulucPage> {
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(50),
                   ),
-                  color: Color(0xFF363f93),
+                  color: kPrimaryColor,
                 ),
                 child: Stack(
                   children: [
@@ -58,10 +60,10 @@ class PhulucPageState extends State<PhulucPage> {
                         )
                     ),
                     Positioned(
-                        top: 95,
+                        top: 90,
                         left: 20,
                         child: Text('PHỤ LỤC', style: TextStyle(fontWeight: FontWeight.w800,
-                            fontSize: 30, color: Color(0xFF363f93)),)
+                            fontSize: 35, color: Color(0xFF363f93)),)
 
                     )
                   ],
@@ -102,8 +104,8 @@ class PhulucPageState extends State<PhulucPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text('Phụ luc 1', style: TextStyle(color: Colors.white,fontSize: 20,),),
-                            SizedBox(height: 2,),
-                            Text ('Quy trình xử lý kháng thể yếu',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.w800),),
+                            SizedBox(height: 0,),
+                            Text ('Quy trình xử lý kháng thể yếu',style: TextStyle(color: Colors.white,fontSize: 23,fontWeight: FontWeight.w800),),
                           ]
                         ),
                       )
@@ -140,9 +142,9 @@ class PhulucPageState extends State<PhulucPage> {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Phụ luc 2', style: TextStyle(color: Colors.white,fontSize: 20,),),
+                                Text('Phụ lục 2', style: TextStyle(color: Colors.white,fontSize: 20,),),
                                 SizedBox(height: 2,),
-                                Text ('Phương pháp hấp phụ Hồng cầu O',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.w800),),
+                                Text ('Phương pháp hấp phụ Hồng cầu O',style: TextStyle(color: Colors.white,fontSize: 22,fontWeight: FontWeight.w800),),
                               ]
                           ),
                         )
@@ -178,7 +180,7 @@ class PhulucPageState extends State<PhulucPage> {
                           child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text('Phụ luc 3', style: TextStyle(color: Colors.white,fontSize: 20,),),
+                                Text('Phụ lục 3', style: TextStyle(color: Colors.white,fontSize: 20,),),
                                 SizedBox(height: 2,),
                                 Text ('Xét nghiệm nước bọt (Saliva test)',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.w800),),
                               ]
@@ -187,6 +189,45 @@ class PhulucPageState extends State<PhulucPage> {
                     ),
                     ),
 
+
+                    GestureDetector(
+                      onTap: () { //Navigator.push( context, MaterialPageRoute(builder: (context) => MyHomePage(title: "Chuyền vào EAP chi tiết")),);},
+                        Navigator.push(context, PageTransition(type: PageTransitionType.leftToRight, child: Phuluc4Page(title: "Chuyền vào phụ lục 4")));},
+                      child: Container(
+                          margin: const EdgeInsets.only(bottom: 10, top: 5),
+                          height: 166,
+                          padding:
+                          const EdgeInsets.only(left: 20, right:  20, bottom: 20),
+                          child:Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFf363f93),
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(80.0),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color(0xFF363f93).withOpacity(0.3),
+                                    offset: Offset(-10.0, 0.0),
+                                    blurRadius: 20.0,
+                                    spreadRadius: 4.0),
+                              ],
+                            ),
+                            padding: EdgeInsets.only(
+                              left: 32,
+                              top: 25,
+                              bottom: 0,
+                            ),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text('Phụ lục 4', style: TextStyle(color: Colors.white,fontSize: 19,),),
+                                  SizedBox(height: 2,),
+                                  Text ('Phản ứng dưới nhóm đối với hệ thống nhóm máu ABO',style: TextStyle(color: Colors.white,fontSize: 24,fontWeight: FontWeight.w800),),
+                                ]
+                            ),
+                          )
+                      ),
+                    ),
 
                   ],
                 )

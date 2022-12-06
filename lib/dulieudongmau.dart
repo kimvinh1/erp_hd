@@ -32,7 +32,7 @@ class Dongmau {
         '(Data) Normalized curve delta too LOW.',
         "Mức độ chênh lệch (thay đổi) của đường cong quá thấp",
         ' - Bước 1: Mẫu có thông báo lỗi 5060 (độ chênh lệch của đường cong thấp), kết quả bị Failed\n - Bước 2: Đường cong (màu xanh da trời) có hình dạng chữ “S” với 4 giai đoạn: đường cơ sở, tăng tốc, giảm tốc và giai đoạn ổn định. Đường cơ sở kéo dài.\n - Bước 3: Không có các đường đạo hàm vì xét nghiệm này sử dụng thuật toán ngưỡng\n - Bước 4: Mức độ chênh lệch (theo trục Y) giữa đường baseline và đường biểu thị giai đoạn ổn định là thấp (chỉ thay đổi 10 đơn vị, từ 70 đến 80)',
-        'Chạy xét nghiệm mở rộng Fib-C Low để mẫu được chạy dưới chế độ cô đặc rồi mới có thể đo được trong dải tuyến tính',
+        '- Xét nghiệm PT: Chạy xét nghiệm PT ở chế độ mở rộng - PT(E)\n\n- Xét nghiệm APTT: Chạy xét nghiệm APTT ở chế độ mở rộng - APTT(E)\n\n- Xét nghiệm Fib-C: Chạy xét nghiệm mở rộng Fib-C Low để mẫu được chạy dưới chế độ cô đặc rồi mới có thể đo được trong dải tuyến tính',
         "5060.png",
         ""));
     items.add(Dongmau(

@@ -7,8 +7,10 @@ import 'modau.dart';
 import "product.dart";
 import "package:flutter_speed_dial/flutter_speed_dial.dart";
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(MyApp());
+
 
 
 class MyApp extends StatelessWidget {
@@ -20,8 +22,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'EAP-DMHH',
       theme: ThemeData(
-        // We set Poppins as our default font
-        textTheme: GoogleFonts.openSansTextTheme(Theme.of(context).textTheme),
+        //  poppins   roboto   openSans
+        textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme),
         primaryColor: kPrimaryColor,
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -41,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 2),
+        Duration(seconds: 3),
             () => Navigator.of(context).pushReplacement(MaterialPageRoute(
             builder: (BuildContext context) =>
 
@@ -59,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
         width: double.infinity,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/test1.gif"),
+              image: AssetImage("assets/images/test2.gif"),
               fit: BoxFit.contain,
             ),),
 
@@ -117,12 +119,12 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: false,
         backgroundColor: kPrimaryColor,
 
-         title:Container( margin: EdgeInsets.fromLTRB(15,15,0,0),child: Text("DANH SÁCH CỜ BÁO",style: TextStyle( fontSize: 18, color: Colors.white, ),),),
+         title:Container( margin: EdgeInsets.fromLTRB(0,0,0,0),child: Text("DANH SÁCH CỜ BÁO",style: TextStyle( fontSize: 22, color: Colors.white, ),),),
         //fontWeight: FontWeight.w700
 
-          actions: [Container( margin: EdgeInsets.fromLTRB(30,20,30,10),width: 60,height: 60, child: SvgPicture.asset('assets/images/mitalab4.svg', color: Colors.white),
+          /*actions: [Container( margin: EdgeInsets.fromLTRB(30,20,30,10),width: 60,height: 60, child: SvgPicture.asset('assets/images/mitalab4.svg', color: Colors.white),
 
-        ),]
+        ),]*/
 
       ),
       floatingActionButton: SpeedDial( //Speed dial menu
